@@ -1,0 +1,37 @@
+﻿@model QuestionsViewModel
+
+<div class="container">
+    <main role="main" class="pb-3" style="margin-top: 80px;">
+        @foreach (var question in Model.Questions)
+        {
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card card-body bg-light">
+                        <h4>
+                            <a href="/questions/viewquestion?id=@question.Id">
+                                @question.Title
+                            </a>
+                        </h4>
+                        <div>
+                            <span>Tags:</span>
+                            @foreach (var tag in question.QuestionsTags)
+                            {
+                                <span class="badge badge-primary">@tag.Tag</span>
+                            }
+
+                        </div>
+                        <div style="margin-top: 10px;">
+                            @question.Text
+                        </div>
+                        <span>Likes: @question.Likes</span>
+                        <br />
+                        <span>@question.Answers.Count answer(s)</span>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+
+    </main>
+</div>
